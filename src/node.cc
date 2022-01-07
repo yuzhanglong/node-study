@@ -504,10 +504,12 @@ MaybeLocal<Value> StartExecution(Environment* env, StartExecutionCallback cb) {
     return StartExecution(env, "internal/main/check_syntax");
   }
 
+  // 使用 node index.js 方式执行代码
   if (!first_argv.empty() && first_argv != "-") {
     return StartExecution(env, "internal/main/run_main_module");
   }
 
+  // 直接执行 node，交互式命令行
   if (env->options()->force_repl || uv_guess_handle(STDIN_FILENO) == UV_TTY) {
     return StartExecution(env, "internal/main/repl");
   }
@@ -843,13 +845,13 @@ static std::atomic_bool init_called{false};
 int InitializeNodeWithArgs(std::vector<std::string>* argv,
                            std::vector<std::string>* exec_argv,
                            std::vector<std::string>* errors) {
-  // Make sure InitializeNodeWithArgs() is called only once.
+  // 确保 InitializeNodeWithArgs() 只调用一次
   CHECK(!init_called.exchange(true));
 
-  // Initialize node_start_time to get relative uptime.
+  // 初始化 node_start_time 以获得相对正常运行时间
   per_process::node_start_time = uv_hrtime();
 
-  // Register built-in modules
+  // 注册内置模块
   binding::RegisterBuiltinModules();
 
   // Make inherited handles noninheritable.

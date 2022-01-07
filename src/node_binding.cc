@@ -251,10 +251,15 @@ static thread_local node_module* thread_local_modpending;
 bool node_is_initialized = false;
 
 extern "C" void node_module_register(void* m) {
+  // reinterpret_cast 用于进行各种不同类型的指针之间、不同类型的引用之间以及指针和能容纳指针的整数类型之间的转换。
+  // 转换时，执行的是逐个比特复制的操作
   struct node_module* mp = reinterpret_cast<struct node_module*>(m);
 
+  // mp 即为对应的内置模块，mp -> nm_link 指向全局内置模块列表 modlist_internal
   if (mp->nm_flags & NM_F_INTERNAL) {
+    // 这个就是我们链表的 next 节点
     mp->nm_link = modlist_internal;
+    // 将头指针指向 mp
     modlist_internal = mp;
   } else if (!node_is_initialized) {
     // "Linked" modules are included as part of the node project.
