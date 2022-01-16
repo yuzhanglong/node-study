@@ -22,7 +22,7 @@
 !.mailmap
 !.nycrc
 !.yamllint.yaml
-
+!.idea
 # === Rules for root dir ===
 /core
 /vgcore.*
