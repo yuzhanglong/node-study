@@ -1,0 +1,25 @@
+
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Attach",
+            "port": 9229,
+            "request": "attach",
+            "skipFiles": [],
+            "type": "pwa-node"
+        },
+        {
+            "name": "(lldb) 启动",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/out/Debug/node",
+            "args": ["--inspect-brk", "${workspaceFolder}/demos/hello-world.js"],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb"
+        }
+    ]
+}

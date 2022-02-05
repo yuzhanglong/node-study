@@ -23,6 +23,7 @@
 !.nycrc
 !.yamllint.yaml
 !.idea
+!.vscode
 # === Rules for root dir ===
 /core
 /vgcore.*
