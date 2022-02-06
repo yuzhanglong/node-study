@@ -1,20 +1,31 @@
-
 {
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Attach",
+            "name": "调试 Node App (internal module)",
             "port": 9229,
             "request": "attach",
             "skipFiles": [],
             "type": "pwa-node"
         },
         {
-            "name": "(lldb) 启动",
+            "name": "初始化 Node 源码调试 (internal module)",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/out/Debug/node",
-            "args": ["--inspect-brk", "${workspaceFolder}/demos/hello-world.js"],
+            "args": ["--inspect-brk", "${workspaceFolder}/demos/timeout.js"],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb"
+        },
+        {
+            "name": "初始化 Node 源码调试 (cpp)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/out/Debug/node",
+            "args": ["${workspaceFolder}/demos/timeout.js"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
