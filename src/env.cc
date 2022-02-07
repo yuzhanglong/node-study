@@ -832,6 +832,7 @@ void Environment::RequestInterruptFromV8() {
   }, interrupt_data);
 }
 
+// 调度 c++ 层的定时器节点，JavaScript 层维护了所有定时器节点的超时最小值
 void Environment::ScheduleTimer(int64_t duration_ms) {
   if (started_cleanup_) return;
   uv_timer_start(timer_handle(), RunTimers, duration_ms, 0);
@@ -847,6 +848,7 @@ void Environment::ToggleTimerRef(bool ref) {
   }
 }
 
+// libuv 定时器到期时，本回调函数会被执行
 void Environment::RunTimers(uv_timer_t* handle) {
   Environment* env = Environment::from_timer_handle(handle);
   TraceEventScope trace_scope(TRACING_CATEGORY_NODE1(environment),
@@ -888,6 +890,11 @@ void Environment::RunTimers(uv_timer_t* handle) {
   //    is at least one timer remaining that is refed.
   // 3. If it's < 0, the absolute value represents the next timer's expiry
   //    and there are no timers that are refed.
+
+  //  为了减少 JS-C++ 边界跨越，从 JS 层 processTimers 返回的值有如下意义：
+  //  1. 如果 = 0，则不再存在计时器，调用 uv_unref 标志计时节点过期
+  //  2. 如果 > 0，则该值表示下一个计时器的到期时间，说明注册的所有计时器回调并没有完全执行。
+  //  3. 如果 < 0，则绝对值代表下一个定时器的到期，没有定时器处在 refed 状态。
   int64_t expiry_ms =
       ret.ToLocalChecked()->IntegerValue(env->context()).FromJust();
 
@@ -897,6 +904,12 @@ void Environment::RunTimers(uv_timer_t* handle) {
     int64_t duration_ms =
         llabs(expiry_ms) - (uv_now(env->event_loop()) - env->timer_base());
 
+    // 再次调用 ScheduleTimer，更新 libuv 层的二叉堆，由此可见 ScheduleTimer 的调用有两种方式
+    // 第一种是 JavaScript 层维护的定时器超时最小值，如果这个值被更新（有更小的超时时间），ScheduleTimer 会从 js 层调用
+    // 第二种是 JavaScript 层在执行回调之后发现仍然有其余回调（通过拿到 js 层的返回值判断），我们会传入新的超时时间，更新 libuv 计时器
+    // 为什么要分成两个地方呢，其实源码的注释已经告诉我们了 -- 为了减少 JS-C++ 边界跨越
+    // 设想一下有一千行 setTimeout(() => {}, 1000); 执行，如果放在一处，js 层和 c++ 层在这里会发生 1000 次交互以注册定时器
+    // 如果放在两处，这 1000 个定时器节点会被放在同一个链表里面（js 层维护），只需要发生两次交互
     env->ScheduleTimer(duration_ms > 0 ? duration_ms : 1);
 
     if (expiry_ms > 0)

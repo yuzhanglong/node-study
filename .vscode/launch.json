@@ -3,19 +3,19 @@
     "configurations": [
         {
             "command": "make",
-            "name": "构建 nodejs 源代码",
+            "name": "构建 Node 源码",
             "request": "launch",
             "type": "node-terminal"
         },
         {
-            "name": "调试 Node App (internal module)",
+            "name": "调试 Node App",
             "port": 9229,
             "request": "attach",
             "skipFiles": [],
             "type": "pwa-node"
         },
         {
-            "name": "初始化 Node 源码调试 (internal module)",
+            "name": "调试 Node 源码 (支持 node 层断点)",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/out/Debug/node",
@@ -32,14 +32,19 @@
             "MIMode": "lldb"
         },
         {
-            "name": "初始化 Node 源码调试 (cpp)",
+            "name": "调试 Node 源码",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/out/Debug/node",
             "args": ["${workspaceFolder}/demos/timeout.js"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "environment": [
+                {
+                    "name": "NODE_DEBUG",
+                    "value": "TIMER"
+                }
+            ],
             "externalConsole": false,
             "MIMode": "lldb"
         }

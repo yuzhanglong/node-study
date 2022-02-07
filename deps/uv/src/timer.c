@@ -73,22 +73,27 @@ int uv_timer_start(uv_timer_t* handle,
   if (uv__is_closing(handle) || cb == NULL)
     return UV_EINVAL;
 
+  // 如果当前 handle 处在执行状态，应该终止之
   if (uv__is_active(handle))
     uv_timer_stop(handle);
 
+  // 绝对超时时间
   clamped_timeout = handle->loop->time + timeout;
   if (clamped_timeout < timeout)
     clamped_timeout = (uint64_t) -1;
 
+  // 到期时执行的回调函数
   handle->timer_cb = cb;
   handle->timeout = clamped_timeout;
   handle->repeat = repeat;
   /* start_id is the second index to be compared in timer_less_than() */
   handle->start_id = handle->loop->timer_counter++;
 
+  // 将该节点插入二叉堆
   heap_insert(timer_heap(handle->loop),
               (struct heap_node*) &handle->heap_node,
               timer_less_than);
+
   uv__handle_start(handle);
 
   return 0;
