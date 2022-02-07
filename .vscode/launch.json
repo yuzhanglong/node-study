@@ -2,6 +2,12 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "command": "make",
+            "name": "构建 nodejs 源代码",
+            "request": "launch",
+            "type": "node-terminal"
+        },
+        {
             "name": "调试 Node App (internal module)",
             "port": 9229,
             "request": "attach",
@@ -16,7 +22,12 @@
             "args": ["--inspect-brk", "${workspaceFolder}/demos/timeout.js"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
+            "environment": [
+                {
+                    "name": "NODE_DEBUG",
+                    "value": "TIMER"
+                }
+            ],
             "externalConsole": false,
             "MIMode": "lldb"
         },
