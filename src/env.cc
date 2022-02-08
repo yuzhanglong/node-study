@@ -544,12 +544,15 @@ void Environment::InitializeLibuv() {
 
   CHECK_EQ(0, uv_timer_init(event_loop(), timer_handle()));
   uv_unref(reinterpret_cast<uv_handle_t*>(timer_handle()));
-
+  // 初始化 immediate check handle，注册到 check 阶段
   uv_check_init(event_loop(), immediate_check_handle());
+  // 预先置为 unref 状态
   uv_unref(reinterpret_cast<uv_handle_t*>(immediate_check_handle()));
 
+  // 初始化 immediate idle handle，注册到 idle 阶段
   uv_idle_init(event_loop(), immediate_idle_handle());
 
+  // 激活 immediate check handle，check 阶段时回调会被执行
   uv_check_start(immediate_check_handle(), CheckImmediate);
 
   // Inform V8's CPU profiler when we're idle.  The profiler is sampling-based
@@ -557,6 +560,8 @@ void Environment::InitializeLibuv() {
   // epoll_wait() and friends so profiling tools can filter it out.  The samples
   // still end up in v8.log but with state=IDLE rather than state=EXTERNAL.
   uv_prepare_init(event_loop(), &idle_prepare_handle_);
+
+  // 初始化 idle_check_handle_，注册到 check 阶段
   uv_check_init(event_loop(), &idle_check_handle_);
 
   uv_async_init(
@@ -936,6 +941,7 @@ void Environment::CheckImmediate(uv_check_t* handle) {
     return;
 
   do {
+    // 执行 js 层的 processImmediate 方法
     MakeCallback(env->isolate(),
                  env->process_object(),
                  env->immediate_callback_function(),
@@ -944,17 +950,23 @@ void Environment::CheckImmediate(uv_check_t* handle) {
                  {0, 0}).ToLocalChecked();
   } while (env->immediate_info()->has_outstanding() && env->can_call_into_js());
 
+  // 处理完所有 immediate 节点之后，调用 uv_idle_stop 使 immediate_idle_handle 失活
+  // 见 Environment::ToggleImmediateRef
   if (env->immediate_info()->ref_count() == 0)
     env->ToggleImmediateRef(false);
 }
 
+// 这个方法在 C++ 层和 JavaScript 都有调用，C++ 层是在处理完所有 immediate 节点之后，ref = false
+// JS 层是存在 immediate 回调时调用
 void Environment::ToggleImmediateRef(bool ref) {
   if (started_cleanup_) return;
 
   if (ref) {
     // Idle handle is needed only to stop the event loop from blocking in poll.
+    // 将 IDLE 阶段的节点置为激活状态，不允许 Poll IO阶段阻塞
     uv_idle_start(immediate_idle_handle(), [](uv_idle_t*){ });
   } else {
+    // 将 IDLE 阶段的节点置为失活状态，允许 Poll IO阶段阻塞
     uv_idle_stop(immediate_idle_handle());
   }
 }
