@@ -19,14 +19,14 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/out/Debug/node",
-            "args": ["--inspect-brk", "${workspaceFolder}/demos/timeout.js"],
+            "args": ["--inspect-brk", "${workspaceFolder}/demos/fs.js"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [
-                {
-                    "name": "NODE_DEBUG",
-                    "value": "TIMER"
-                }
+                // {
+                //     "name": "NODE_DEBUG",
+                //     "value": "TIMER"
+                // }
             ],
             "externalConsole": false,
             "MIMode": "lldb"
@@ -36,14 +36,14 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/out/Debug/node",
-            "args": ["${workspaceFolder}/demos/timeout.js"],
+            "args": ["${workspaceFolder}/demos/fs.js"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [
-                {
-                    "name": "NODE_DEBUG",
-                    "value": "TIMER"
-                }
+                // {
+                //     "name": "NODE_DEBUG",
+                //     "value": "TIMER"
+                // }
             ],
             "externalConsole": false,
             "MIMode": "lldb"

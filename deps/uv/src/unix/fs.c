@@ -149,8 +149,9 @@ extern char *mkdtemp(char *template); /* See issue #740 on AIX < 7 */
 
 #define POST                                                                  \
   do {                                                                        \
-    if (cb != NULL) {                                                         \
+    if (cb != NULL) {  
       uv__req_register(loop, req);                                            \
+      // 向 libuv 的线程池提交一个任务 uv__fs_work，完成会调用 uv__fs_done
       uv__work_submit(loop,                                                   \
                       &req->work_req,                                         \
                       UV__WORK_FAST_IO,                                       \
@@ -456,6 +457,7 @@ static ssize_t uv__fs_preadv(uv_file fd,
 #endif
 
 
+// 最终调用系统调用 read 方法
 static ssize_t uv__fs_read(uv_fs_t* req) {
 #if defined(__linux__)
   static int no_preadv;
