@@ -382,6 +382,9 @@ int uv_run(uv_loop_t* loop, uv_run_mode mode) {
     uv__run_idle(loop);
     uv__run_prepare(loop);
 
+    // timeout 是 IO POOL 的阻塞时间，由 uv_backend_timeout 得到
+    // 我们知道，如果 setImmediate 回调存在，idle 队列会有一个 handler， 
+    // 如果队列为空，那么 POLL 阶段将不阻塞
     timeout = 0;
     if ((mode == UV_RUN_ONCE && !ran_pending) || mode == UV_RUN_DEFAULT)
       timeout = uv_backend_timeout(loop);

@@ -175,6 +175,7 @@ static void RunMicrotasks(const FunctionCallbackInfo<Value>& args) {
   env->context()->GetMicrotaskQueue()->PerformCheckpoint(env->isolate());
 }
 
+// 注册 nextTick 回调
 static void SetTickCallback(const FunctionCallbackInfo<Value>& args) {
   Environment* env = Environment::GetCurrent(args);
   CHECK(args[0]->IsFunction());
