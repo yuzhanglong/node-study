@@ -149,9 +149,8 @@ extern char *mkdtemp(char *template); /* See issue #740 on AIX < 7 */
 
 #define POST                                                                  \
   do {                                                                        \
-    if (cb != NULL) {  
+    if (cb != NULL) {                                                         \
       uv__req_register(loop, req);                                            \
-      // 向 libuv 的线程池提交一个任务 uv__fs_work，完成会调用 uv__fs_done
       uv__work_submit(loop,                                                   \
                       &req->work_req,                                         \
                       UV__WORK_FAST_IO,                                       \
