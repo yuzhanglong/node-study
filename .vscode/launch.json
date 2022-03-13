@@ -1,52 +1,56 @@
 {
-    "version": "0.2.0",
-    "configurations": [
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "command": "make",
+      "name": "构建 Node 源码",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "name": "调试 Node App",
+      "port": 9229,
+      "request": "attach",
+      "skipFiles": [],
+      "type": "pwa-node"
+    },
+    {
+      "name": "调试 Node 源码 (支持 node 层断点)",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/out/Debug/node",
+      "args": [
+        "--enable-source-maps",
+        "--inspect-brk",
+        "${workspaceFolder}/demos/fs.js"
+      ],
+      "stopAtEntry": false,
+      "cwd": "${fileDirname}",
+      "environment": [
         {
-            "command": "make",
-            "name": "构建 Node 源码",
-            "request": "launch",
-            "type": "node-terminal"
-        },
-        {
-            "name": "调试 Node App",
-            "port": 9229,
-            "request": "attach",
-            "skipFiles": [],
-            "type": "pwa-node"
-        },
-        {
-            "name": "调试 Node 源码 (支持 node 层断点)",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/out/Debug/node",
-            "args": ["--inspect-brk", "${workspaceFolder}/demos/fs.js"],
-            "stopAtEntry": false,
-            "cwd": "${fileDirname}",
-            "environment": [
-                // {
-                //     "name": "NODE_DEBUG",
-                //     "value": "TIMER"
-                // }
-            ],
-            "externalConsole": false,
-            "MIMode": "lldb"
-        },
-        {
-            "name": "调试 Node 源码",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/out/Debug/node",
-            "args": ["${workspaceFolder}/demos/fs.js"],
-            "stopAtEntry": false,
-            "cwd": "${fileDirname}",
-            "environment": [
-                // {
-                //     "name": "NODE_DEBUG",
-                //     "value": "TIMER"
-                // }
-            ],
-            "externalConsole": false,
-            "MIMode": "lldb"
+          "name": "NODE_DEBUG",
+          "value": "TIMER"
         }
-    ]
+      ],
+      "externalConsole": false,
+      "MIMode": "lldb"
+    },
+    {
+      "name": "调试 Node 源码",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/out/Debug/node",
+      "args": ["${workspaceFolder}/demos/fs.js"],
+      "stopAtEntry": false,
+      "cwd": "${fileDirname}",
+      "environment": [
+        {
+            "name": "NODE_DEBUG",
+            "value": "TIMER"
+        }
+      ],
+      "externalConsole": false,
+      "MIMode": "lldb"
+    }
+  ]
 }
