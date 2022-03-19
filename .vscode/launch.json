@@ -22,7 +22,7 @@
       "args": [
         "--enable-source-maps",
         "--inspect-brk",
-        "${workspaceFolder}/demos/fs.js"
+        "${workspaceFolder}/demos/timeout.js"
       ],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
@@ -30,23 +30,6 @@
         {
           "name": "NODE_DEBUG",
           "value": "TIMER"
-        }
-      ],
-      "externalConsole": false,
-      "MIMode": "lldb"
-    },
-    {
-      "name": "调试 Node 源码",
-      "type": "lldb",
-      "request": "launch",
-      "program": "${workspaceFolder}/out/Debug/node",
-      "args": ["${workspaceFolder}/demos/fs.js"],
-      "stopAtEntry": false,
-      "cwd": "${fileDirname}",
-      "environment": [
-        {
-            "name": "NODE_DEBUG",
-            "value": "TIMER"
         }
       ],
       "externalConsole": false,

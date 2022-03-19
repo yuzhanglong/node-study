@@ -170,16 +170,25 @@ void uv__run_timers(uv_loop_t* loop) {
   uv_timer_t* handle;
 
   for (;;) {
+    // 拿到最早到期的节点
     heap_node = heap_min(timer_heap(loop));
     if (heap_node == NULL)
       break;
 
+    // 拿到该节点对应的回调函数
     handle = container_of(heap_node, uv_timer_t, heap_node);
+
+    // 如果当前时间早于最早到期的节点，退出循环
     if (handle->timeout > loop->time)
       break;
 
+    // 节点已经到期，删除该节点
     uv_timer_stop(handle);
+
+    // 如果该节点是 repeat 类型的，则重新插入
     uv_timer_again(handle);
+
+    // 执行该节点对应的回调函数
     handle->timer_cb(handle);
   }
 }

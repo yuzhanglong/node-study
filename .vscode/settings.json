@@ -1,4 +1,11 @@
 {
   "C_Cpp.errorSquiggles": "Disabled",
-  "cSpell.words": ["Immediates", "Libuv", "yuzhanglong"]
+  "cSpell.words": [
+    "apapirovski",
+    "Immediates",
+    "Libuv",
+    "yuzhanglong"
+  ],
+  // 将书签配置保存在项目中以方便随 Git 分发
+  "bookmarks.saveBookmarksInProject": true
 }

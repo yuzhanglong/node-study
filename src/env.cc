@@ -909,12 +909,6 @@ void Environment::RunTimers(uv_timer_t* handle) {
     int64_t duration_ms =
         llabs(expiry_ms) - (uv_now(env->event_loop()) - env->timer_base());
 
-    // 再次调用 ScheduleTimer，更新 libuv 层的二叉堆，由此可见 ScheduleTimer 的调用有两种方式
-    // 第一种是 JavaScript 层维护的定时器超时最小值，如果这个值被更新（有更小的超时时间），ScheduleTimer 会从 js 层调用
-    // 第二种是 JavaScript 层在执行回调之后发现仍然有其余回调（通过拿到 js 层的返回值判断），我们会传入新的超时时间，更新 libuv 计时器
-    // 为什么要分成两个地方呢，其实源码的注释已经告诉我们了 -- 为了减少 JS-C++ 边界跨越
-    // 设想一下有一千行 setTimeout(() => {}, 1000); 执行，如果放在一处，js 层和 c++ 层在这里会发生 1000 次交互以注册定时器
-    // 如果放在两处，这 1000 个定时器节点会被放在同一个链表里面（js 层维护），只需要发生两次交互
     env->ScheduleTimer(duration_ms > 0 ? duration_ms : 1);
 
     if (expiry_ms > 0)

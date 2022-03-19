@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="da722bf7-084a-42b6-8bdb-b198aadbff01" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/customTargets.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/markdown.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/node-study.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/node-study.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
-    </list>
+    <list default="true" id="da722bf7-084a-42b6-8bdb-b198aadbff01" name="变更" comment="docs: update comments" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +9,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -32,9 +22,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="/Applications/iTerm.app" />
     <property name="project.structure.last.edited" value="模块" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="com.sburlyaev.cmd.plugin.PluginSettings" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -46,7 +38,67 @@
       <updated>1645182360827</updated>
       <workItem from="1645182363441" duration="41000" />
       <workItem from="1647182386096" duration="4000" />
+      <workItem from="1647190423162" duration="727000" />
+      <workItem from="1647517510833" duration="39000" />
+      <workItem from="1647659995824" duration="290000" />
+      <workItem from="1647711994473" duration="884000" />
     </task>
+    <task id="LOCAL-00001" summary="fix: fix debug option for M1 mbp debug error">
+      <created>1647190458194</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1647190458194</updated>
+    </task>
+    <task id="LOCAL-00002" summary="fix: fix debug option for M1 mbp debug error">
+      <created>1647190540479</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1647190540479</updated>
+    </task>
+    <task id="LOCAL-00003" summary="docs: update comments">
+      <created>1647712022748</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1647712022748</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/test/fixtures/source-map/throw-on-require.js" />
+        <option value="$PROJECT_DIR$/test/fixtures/source-map/throw-on-require.js.map" />
+        <option value="$PROJECT_DIR$/test/fixtures/source-map/esm-export-missing.mjs" />
+        <option value="$PROJECT_DIR$/test/fixtures/source-map/esm-export-missing.mjs.map" />
+        <option value="$PROJECT_DIR$/test/fixtures/source-map/typescript-throw.js" />
+        <option value="$PROJECT_DIR$/test/fixtures/source-map/typescript-throw.js.map" />
+        <option value="$PROJECT_DIR$/test/fixtures/worker-script.mjs" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fix: fix debug option for M1 mbp debug error" />
+    <MESSAGE value="docs: update comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="docs: update comments" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
