@@ -6,7 +6,7 @@
 				{
 					"line": 139,
 					"column": 1,
-					"label": "setTimeout 入口"
+					"label": "[timers] setTimeout 入口"
 				}
 			]
 		},
@@ -16,7 +16,7 @@
 				{
 					"line": 368,
 					"column": 4,
-					"label": "事件循环入口"
+					"label": "[event-loop] 事件循环入口"
 				}
 			]
 		},
@@ -26,7 +26,22 @@
 				{
 					"line": 167,
 					"column": 9,
-					"label": "事件循环阶段 -- 定时器"
+					"label": "[event-loop] 事件循环阶段 -- 定时器"
+				}
+			]
+		},
+		{
+			"path": "lib/internal/timers.js",
+			"bookmarks": [
+				{
+					"line": 166,
+					"column": 10,
+					"label": "[timers] 初始化 timeout 对象"
+				},
+				{
+					"line": 510,
+					"column": 19,
+					"label": "[timers] 计时器回调执行核心函数"
 				}
 			]
 		}
