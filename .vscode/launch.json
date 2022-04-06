@@ -8,13 +8,6 @@
       "type": "node-terminal"
     },
     {
-      "name": "调试 Node App",
-      "port": 9229,
-      "request": "attach",
-      "skipFiles": [],
-      "type": "pwa-node"
-    },
-    {
       "name": "调试 Node 源码 (支持 node 层断点)",
       "type": "lldb",
       "request": "launch",
@@ -26,14 +19,18 @@
       ],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
-      "environment": [
-        {
-          "name": "NODE_DEBUG",
-          "value": "TIMER"
-        }
-      ],
+      "env": {
+        "NODE_DEBUG": "TIMER"
+      },
       "externalConsole": false,
       "MIMode": "lldb"
+    },
+    {
+      "name": "调试 Node App",
+      "port": 9229,
+      "request": "attach",
+      "skipFiles": [],
+      "type": "pwa-node"
     }
   ]
 }

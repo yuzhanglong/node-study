@@ -371,6 +371,7 @@ int uv_run(uv_loop_t* loop, uv_run_mode mode) {
   int r;
   int ran_pending;
 
+  // 如果循环中有引用的活动句柄(active_handles)、活动请求(active_reqs)或关闭句柄(closing_handles)，则返回非零。
   r = uv__loop_alive(loop);
   if (!r)
     uv__update_time(loop);

@@ -175,10 +175,11 @@ void uv__run_timers(uv_loop_t* loop) {
     if (heap_node == NULL)
       break;
 
-    // 拿到该节点对应的回调函数
+    // 拿到该节点对应的 handler
     handle = container_of(heap_node, uv_timer_t, heap_node);
 
-    // 如果当前时间早于最早到期的节点，退出循环
+    // 如果当前时间 (从 loop 的缓存中拿到，这个值在每一次事件循环开始时会更新，目的是减少时间相关的系统调用)
+    // 早于最早到期的节点，退出循环
     if (handle->timeout > loop->time)
       break;
 

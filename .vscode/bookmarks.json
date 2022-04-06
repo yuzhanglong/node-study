@@ -17,6 +17,11 @@
 					"line": 368,
 					"column": 4,
 					"label": "[event-loop] 事件循环入口"
+				},
+				{
+					"line": 809,
+					"column": 2,
+					"label": "[event-loop] 事件循环阶段 -- Call Pending Callbacks"
 				}
 			]
 		},

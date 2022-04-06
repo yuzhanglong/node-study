@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="da722bf7-084a-42b6-8bdb-b198aadbff01" name="变更" comment="docs: update comments" />
+    <list default="true" id="da722bf7-084a-42b6-8bdb-b198aadbff01" name="变更" comment="docs: add some bookmarks">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/bookmarks.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/bookmarks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/c_cpp_properties.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/c_cpp_properties.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,7 +34,7 @@
     <property name="project.structure.last.edited" value="模块" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="com.sburlyaev.cmd.plugin.PluginSettings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -42,6 +50,9 @@
       <workItem from="1647517510833" duration="39000" />
       <workItem from="1647659995824" duration="290000" />
       <workItem from="1647711994473" duration="917000" />
+      <workItem from="1647762898073" duration="33000" />
+      <workItem from="1649046707358" duration="316000" />
+      <workItem from="1649047034660" duration="86000" />
     </task>
     <task id="LOCAL-00001" summary="fix: fix debug option for M1 mbp debug error">
       <created>1647190458194</created>
@@ -71,7 +82,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647713176949</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="docs: add some bookmarks">
+      <created>1647762920398</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1647762920398</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,7 +120,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fix: fix debug option for M1 mbp debug error" />
     <MESSAGE value="docs: update comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="docs: update comments" />
+    <MESSAGE value="docs: add some bookmarks" />
+    <option name="LAST_COMMIT_MESSAGE" value="docs: add some bookmarks" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
