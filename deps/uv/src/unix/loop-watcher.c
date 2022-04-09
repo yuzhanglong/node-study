@@ -29,6 +29,7 @@
     return 0;                                                                 \
   }                                                                           \
                                                                               \
+                                                                              \
   int uv_##name##_start(uv_##name##_t* handle, uv_##name##_cb cb) {           \
     if (uv__is_active(handle)) return 0;                                      \
     if (cb == NULL) return UV_EINVAL;                                         \
@@ -63,6 +64,7 @@
     uv_##name##_stop(handle);                                                 \
   }
 
+// 可以看到，prepare、check、idle 的实现原理都是一样的
 UV_LOOP_WATCHER_DEFINE(prepare, PREPARE)
 UV_LOOP_WATCHER_DEFINE(check, CHECK)
 UV_LOOP_WATCHER_DEFINE(idle, IDLE)

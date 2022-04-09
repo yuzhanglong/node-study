@@ -960,7 +960,7 @@ void Environment::ToggleImmediateRef(bool ref) {
     // 将 IDLE 阶段的节点置为激活状态，不允许 Poll IO阶段阻塞
     uv_idle_start(immediate_idle_handle(), [](uv_idle_t*){ });
   } else {
-    // 将 IDLE 阶段的节点置为失活状态，允许 Poll IO阶段阻塞
+    // 将 IDLE 阶段的节点置为失活状态，允许 Poll IO 阶段阻塞
     uv_idle_stop(immediate_idle_handle());
   }
 }

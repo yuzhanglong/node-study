@@ -812,11 +812,14 @@ static int uv__run_pending(uv_loop_t* loop) {
   QUEUE pq;
   uv__io_t* w;
 
+  // pending_queue 为空则退出
   if (QUEUE_EMPTY(&loop->pending_queue))
     return 0;
 
+  // 将事件循环内的全局 pending_queue 移动到局部变量 pq 中
   QUEUE_MOVE(&loop->pending_queue, &pq);
 
+  // 逐一执行队列的所有回调
   while (!QUEUE_EMPTY(&pq)) {
     q = QUEUE_HEAD(&pq);
     QUEUE_REMOVE(q);

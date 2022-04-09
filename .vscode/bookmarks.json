@@ -22,6 +22,11 @@
 					"line": 809,
 					"column": 2,
 					"label": "[event-loop] 事件循环阶段 -- Call Pending Callbacks"
+				},
+				{
+					"line": 966,
+					"column": 9,
+					"label": "[event-loop] Call Pending Callbacks 队列生产核心代码"
 				}
 			]
 		},
@@ -47,6 +52,31 @@
 					"line": 510,
 					"column": 19,
 					"label": "[timers] 计时器回调执行核心函数"
+				}
+			]
+		},
+		{
+			"path": "deps/uv/src/unix/loop-watcher.c",
+			"bookmarks": [
+				{
+					"line": 67,
+					"column": 12,
+					"label": "[event-loop] prepare、check、idle 实现代码"
+				}
+			]
+		},
+		{
+			"path": "src/env.cc",
+			"bookmarks": [
+				{
+					"line": 540,
+					"column": 8,
+					"label": "初始化 libuv"
+				},
+				{
+					"line": 923,
+					"column": 24,
+					"label": ""
 				}
 			]
 		}
